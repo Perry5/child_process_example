@@ -1,0 +1,17 @@
+version: "3"
+
+networks:
+  api_server_default:
+    external: true
+
+services:
+  my-lane-task:
+    networks:
+      default:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      ENV_NAME: dev
+    ports:
+      - 4040:4040
