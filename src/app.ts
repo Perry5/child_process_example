@@ -24,10 +24,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(lusca.xframe("SAMEORIGIN"));
 app.use(lusca.xssProtection(true));
-app.use((req, res, next) => {
-    res.locals.user = req.user;
-    next();
-});
+// app.use((req, res, next) => {
+//     res.locals.user = req.user;
+//     next();
+// });
 
 
 if (config.env === "development") {
