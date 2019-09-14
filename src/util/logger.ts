@@ -10,7 +10,7 @@ const logger = winston.createLogger({
         winston.format.splat(),
         winston.format.json()
     ),
-    defaultMeta: { service: "qlearloop-web-app"},
+    defaultMeta: { service: "my-lane-task"},
     transports: [
         new winston.transports.File({ filename: "debug.log", level: "debug" })
     ]
