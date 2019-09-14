@@ -1,8 +1,7 @@
 import express from "express";
 import compression from "compression";  // compresses requests=
 import bodyParser from "body-parser";
-import lusca from "lusca";
-import path from "path";
+// import path from "path";
 import expressWinston from "express-winston";
 import winstonInstance from "./util/logger";
 import config from "./config/config";
@@ -15,19 +14,9 @@ const app = express();
 
 // Express configuration
 app.set("port", config.port || 4040);
-app.set("views", path.join(__dirname, "../views"));
-app.set("view engine", "pug");
 app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-
-app.use(lusca.xframe("SAMEORIGIN"));
-app.use(lusca.xssProtection(true));
-// app.use((req, res, next) => {
-//     res.locals.user = req.user;
-//     next();
-// });
 
 
 if (config.env === "development") {
