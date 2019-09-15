@@ -26,9 +26,6 @@ export const getServices = (req: Request, res: Response) => {
 
     return bbPromise.map(workerResults, (result) => { return result; })
         .then((response) => {
-            console.log();
-            console.log(`RESPONSE IS: `);
-            console.log();
             return res.json(response);
         });
 };
