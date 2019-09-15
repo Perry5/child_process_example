@@ -1,4 +1,5 @@
 import * as geoIp from "geoip-lite";
+import winstonInstance from "../util/logger";
 
 /**
  * A Record<K, T> is an object type whose property keys are K and whose
@@ -6,6 +7,7 @@ import * as geoIp from "geoip-lite";
  * @param address
  */
 function getGeoIp(address: string): Record<string, any> {
+    winstonInstance.info(`Looking up GEO IP for ${address}`);
     return geoIp.lookup(address);
 }
 
@@ -14,6 +16,7 @@ process.on("message",  (message) => {
     const geoIp =  getGeoIp(message);
 
     // send response to master process
+    winstonInstance.info("Sending GEO IP back to API");
     process.send(geoIp);
     process.disconnect();
 });
