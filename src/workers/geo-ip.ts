@@ -7,7 +7,6 @@ import winstonInstance from "../util/logger";
  * @param address
  */
 function getGeoIp(address: string): Record<string, any> {
-    winstonInstance.info(`Looking up GEO IP for ${address}`);
     return geoIp.lookup(address);
 }
 
@@ -16,7 +15,6 @@ process.on("message",  (message) => {
     const geoIp =  getGeoIp(message);
 
     // send response to master process
-    winstonInstance.info("Sending GEO IP back to API");
-    process.send(geoIp);
+    process.send({  geoIp });
     process.disconnect();
 });

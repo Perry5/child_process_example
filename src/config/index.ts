@@ -7,8 +7,6 @@ import fs from "fs";
 if (fs.existsSync(".env")) {
     logger.debug("Using .env file to supply config environment variables");
     dotenv.config({ path: ".env" }); // load vars in .env in PROCESS.ENV
-} else {
-    logger.debug("Make sure you have a .env file");
 }
 
 // define validation for all the env vars
@@ -18,12 +16,11 @@ const envVarsSchema = Joi.object({
         .default("development"),
     PORT: Joi.number()
         .default(4040),
-}).unknown()
-    .required();
+}).unknown();
 
 const { error, value: envVars } = Joi.validate(process.env, envVarsSchema);
 if (error) {
-    throw new Error(`Config validation error: ${error.message}`);
+    throw new Error(`Config validation error: ${ error.message }`);
 }
 
 const config = {
