@@ -4,10 +4,10 @@ import bodyParser from "body-parser";
 // import path from "path";
 import expressWinston from "express-winston";
 import winstonInstance from "./util/logger";
-import config from "./config/config";
+import config from "./config/index";
+import routes from "./api/routes";
 
-// Controllers (route handlers)
-import * as homeController from "./controllers/home";
+
 
 // Create Express server
 const app = express();
@@ -32,9 +32,6 @@ if (config.env === "development") {
     app.use(expressWinston.logger(loggerOptions));
 }
 
-/**
- * Primary app routes.
- */
-app.post("/services", homeController.index);
+app.use(routes);
 
 export default app;

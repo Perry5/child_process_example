@@ -1,6 +1,6 @@
 import logger from "../util/logger";
 import dotenv from "dotenv";
-import Joi from "joi";
+import { Joi } from "celebrate";
 import fs from "fs";
 
 // Load your environment variables from the .env file
