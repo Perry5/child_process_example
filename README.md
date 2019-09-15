@@ -19,10 +19,21 @@ cp .env.example .env
 npm run build
 npm start
 ```
+# HTTP Request
+- Base URL for request is: `localhost:4040/info/`
+- The query parameter `host` is required. Requests won't succeed without it
+- The query parameter `services` is optional. If you don't enter it, it defaults to using 
+`["geoip", "ping", "rdap", "reversedns"]` 
+- The currently supported services are: 
+    - GeoIP
+    - Ping
+
 - Using Curl, Postman or your favorite tool, make a POST request to: 
 ```
-localhost:4040/info/?host=<domain or IP>&services=ping,geoip
+localhost:4040/info/?host=8.8.8.8&services=ping,geoip
 ```
+
+
 # HTTP Response
 Sample response using Postman (With Google's public IP address)
 ![logging_image](src/public/response.png)
