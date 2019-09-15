@@ -14,18 +14,21 @@ import { initiateWorker } from "../util/worker-util";
 export const getServices = (req: Request, res: Response) => {
     // extract list of services from url or default list
     const servicesArray = req.query.services.split(",");
-    const { address } = req.query;
+    const { host } = req.query;
 
     const workerResults = servicesArray.map((service: string) => {
         if (service.toLowerCase() === "geoip") {
-            return initiateWorker("geo-ip.ts", address);
+            return initiateWorker("geo-ip.ts", host);
         } else if (service.toLowerCase() === "ping") {
-            return initiateWorker( "ping.ts", address);
+            return initiateWorker( "ping.ts", host);
         }
     });
 
     return bbPromise.map(workerResults, (result) => { return result; })
         .then((response) => {
+            console.log();
+            console.log(`RESPONSE IS: `);
+            console.log();
             return res.json(response);
         });
 };

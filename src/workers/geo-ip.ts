@@ -1,13 +1,12 @@
 import * as geoIp from "geoip-lite";
-import winstonInstance from "../util/logger";
 
 /**
- * A Record<K, T> is an object type whose property keys are K and whose
- * property values are T
- * @param address
+ * Uses the geoip-lite module to retrieve the GEO IP of a host and returns an Object (Record)
+ * A Record<K, T> is an object type whose property keys are K and whose property values are T
+ * @param host - string - The IP address or URL to be looked up
  */
-function getGeoIp(address: string): Record<string, any> {
-    return geoIp.lookup(address);
+function getGeoIp(host: string): Record<string, any> {
+    return geoIp.lookup(host);
 }
 
 // receive message from master process

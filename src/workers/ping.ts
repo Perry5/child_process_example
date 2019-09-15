@@ -1,15 +1,18 @@
-import winstonInstance from "../util/logger";
+import ping from "ping";
 
-function getPing(address: string): string {
-    return `Got Ping: ${address}`;
+function getPing(host: string) {
+    return ping.promise.probe(host);
 }
 
 // receive message from master process
 process.on("message",  (message) => {
 
-    const ping =  getPing(message);
+    getPing(message)
+        .then((response) => {
+            const isAlive = response.alive ? `Host ${ response.host } is alive` : `Host ${ response.host } is dead`;
 
-    // send response to master process
-    process.send({ ping });
-    process.disconnect();
+            // send response to master process
+            process.send({ ping: isAlive });
+            process.disconnect();
+        });
 });
