@@ -44,6 +44,15 @@ The universal Winston logging library is used for logging.
 API Logging
 ![logging_image](src/public/logging.png)
 
+# Docker
+You can also standup the application using Docker. 
+```$xslt
+docker-compose up --build
+```
+Running with Docker
+![logging_image](src/public/docker.png)
+
+
 
 # Task
 ### Goal:
