@@ -9,7 +9,7 @@ import whois from "whois";
 
 // receive message from master process
 process.on("message",  (message) => {
-    whois.lookup(message, {}, (err: any, data: any) => {
+    whois.lookup(message, { "verbose": false }, (err: any, data: any) => {
         process.send({  rdap: data });
         // send response to master process
         process.disconnect();

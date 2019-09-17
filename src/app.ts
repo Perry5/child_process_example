@@ -1,8 +1,9 @@
 import express from "express";
 import compression from "compression";  // compresses requests=
 import bodyParser from "body-parser";
-// import path from "path";
 import expressWinston from "express-winston";
+import swaggerUiExpress from "swagger-ui-express";
+import swaggerDocument from "./swagger.json";
 import rateLimit from "express-rate-limit";
 import winstonInstance from "./util/logger";
 import config from "./config/index";
@@ -39,6 +40,8 @@ if (config.env === "development") {
     };
     app.use(expressWinston.logger(loggerOptions));
 }
+
+app.use("/api-docs", swaggerUiExpress.serve, swaggerUiExpress.setup(swaggerDocument));
 
 app.use(routes);
 

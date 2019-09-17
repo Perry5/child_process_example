@@ -1,0 +1,54 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "My lane application",
+    "description": "My lane application with multiple workers",
+  },
+  "host": "localhost:4040",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Services",
+      "description": "API for services in the system"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json",
+    "application/x-www-form-urlencoded"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/info/{host}/{services}": {
+      "get": {
+        "summary": "Get services for given host",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "host",
+            "required": true,
+            "type": "string",
+            "description": "Host (IP or Domain) for which to query services for"
+          },
+          {
+            "in": "query",
+            "name": "services",
+            "required": false,
+            "type": "array",
+            "description": "List of services to get for host"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  }
+}
