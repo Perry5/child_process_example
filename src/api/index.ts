@@ -21,6 +21,8 @@ export const getServices = (req: Request, res: Response) => {
             return initiateWorker("geo-ip.ts", host);
         } else if (service.toLowerCase() === "ping") {
             return initiateWorker( "ping.ts", host);
+        } else if (service.toLowerCase() === "rdap") {
+            return initiateWorker("rdap.ts", host);
         }
     });
 

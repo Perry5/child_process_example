@@ -36,13 +36,13 @@ localhost:4040/info/?host=8.8.8.8&services=ping,geoip
 
 # HTTP Response
 Sample response using Postman (With Google's public IP address)
-![logging_image](src/public/response.png)
+![logging_image](public/response.png)
 
 # Logging
 The universal Winston logging library is used for logging.
 
 API Logging
-![logging_image](src/public/logging.png)
+![logging_image](public/logging.png)
 
 # Docker
 You can also standup the application using Docker. 
@@ -50,7 +50,7 @@ You can also standup the application using Docker.
 docker-compose up --build
 ```
 Running with Docker
-![logging_image](src/public/docker.png)
+![logging_image](public/docker.png)
 
 
 

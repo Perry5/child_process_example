@@ -3,6 +3,7 @@ import compression from "compression";  // compresses requests=
 import bodyParser from "body-parser";
 // import path from "path";
 import expressWinston from "express-winston";
+import rateLimit from "express-rate-limit";
 import winstonInstance from "./util/logger";
 import config from "./config/index";
 import routes from "./api/routes";
@@ -18,6 +19,13 @@ app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// This allows a max number of 60 requests within 15 minutes.
+const limiter = new rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 60
+});
+
+app.use(limiter);
 
 if (config.env === "development") {
     expressWinston.requestWhitelist.push("body");

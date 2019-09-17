@@ -6,7 +6,6 @@ function getPing(host: string) {
 
 // receive message from master process
 process.on("message",  (message) => {
-
     getPing(message)
         .then((response) => {
             const isAlive = response.alive ? `Host ${ response.host } is alive` : `Host ${ response.host } is dead`;

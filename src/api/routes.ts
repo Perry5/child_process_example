@@ -7,7 +7,6 @@ import * as services from "./index";
 
 /**
  * Primary app route.
- * localhost:4040/info/?address=173.67.10.172&services=geo_ip
  */
 router.route("/info/:host?/:services?")
     .get(celebrate({
