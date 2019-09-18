@@ -27,12 +27,15 @@ npm start
 - The currently supported services are: 
     - GeoIP
     - Ping
+    - RDAP
 
 - Using Curl, Postman or your favorite tool, make a POST request to: 
 ```
 localhost:4040/info/?host=8.8.8.8&services=ping,geoip
 ```
-
+- Note:
+    - `host`: Must be a valid IP address or relative URI (without the "http" or "https")
+    - `services`: Is an optional parameter
 
 # HTTP Response
 Sample response using Postman (With Google's public IP address)
@@ -52,7 +55,8 @@ docker-compose up --build
 Running with Docker
 ![logging_image](public/docker.png)
 
-
+# Swagger UI
+```http://localhost:4040/api-docs```
 
 # Task
 ### Goal:
