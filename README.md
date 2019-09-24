@@ -1,4 +1,6 @@
-# Coding Assessment
+# Example of how to use Node's Child_Process Module`
+
+This shows an example of how to use Node's `child_process` module to serve as workers running on different processes. This application uses an API to send jobs to multiple "workers", waits for the results and then returns the combined result.
 
 # Getting started
 - Clone the repository
