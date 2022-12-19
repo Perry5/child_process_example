@@ -57,7 +57,7 @@
     "request": "^2.88.0",
     "request-promise": "^4.2.4",
     "swagger-ui-express": "^4.1.1",
-    "whois": "^2.11.0",
+    "whois": "^2.13.6",
     "whois-rdap": "^1.4.5",
     "winston": "^3.2.1"
   },
